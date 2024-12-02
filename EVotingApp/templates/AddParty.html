@@ -1,0 +1,95 @@
+{% load static %}
+<html>
+<head>
+<title>Finger Print Voting System Using Minutiae Algorithm And Block Chain</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+ <script LANGUAGE="Javascript" >
+function validate(){
+	var x=document.forms["f1"]["t1"].value;
+	var y=document.forms["f1"]["t2"].value;
+	var c=document.forms["f1"]["t3"].value;
+	var e=document.forms["f1"]["t4"].value;
+	if(x == null || x==""){
+		window.alert("candidate name must be enter");
+		document.f1.username.focus();
+		return false;
+	}
+	if(y == null || y==""){
+		window.alert("party name must be enter");
+		document.f1.password.focus();
+		return false;
+	}
+	if(c == null || c==""){
+		window.alert("area name must be enter");
+		document.f1.contact.focus();
+		return false;
+	}
+	
+	if(e == null || e==""){
+		window.alert("image must be upload");
+		document.f1.email.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow">Finger Print Voting System Using Minutiae Algorithm And Block Chain</font></center>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+      <li><a href="{% url 'AddParty' %}">Add Party Details</a></li>
+	  <li><a href="{% url 'ViewParty' %}">View Party Details</a></li>
+	  <li><a href="{% url 'ViewVotes' %}">View Votes</a></li>
+	  <li><a href="{% url 'index' %}">Logout</a></li>		
+		</center></ul>
+<br class="clearfix" />
+				</div>
+			
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="230" alt="" />
+	</div>	
+			<center>
+<form name="f1" method="post" action={% url 'AddPartyAction' %} enctype="multipart/form-data" OnSubmit="return validate()">
+	{% csrf_token %}<br/>
+   <h3><b>Add Party Candidate Screen</b></h3>
+   
+	<font size="" color="black"><center>{{ data }}</center></font>
+						
+						<table align="center" width="80" >
+			 <tr><td><font size="3" color="black">Candidate&nbsp;Name</b></td><td><input type="text" name="t1" style="font-family: Comic Sans MS" size="30"/></td></tr>
+         
+		  
+		<tr><td><font size="3" color="black">Party&nbsp;Name</b></td><td><select name="t2">
+		<option value="Congress">Congress</option>
+		<option value="BJP">BJP</option>
+		<option value="BRS">BRS</option>
+		</select>
+		</td></tr>
+
+		
+		<tr><td><font size="3" color="black">Area&nbsp;Name</b></td><td><input type="text" name="t3" style="font-family: Comic Sans MS" size="20"/></td></tr>
+
+		<tr><td><font size="3" color="black">Profile&nbsp;Image</b></td><td><input type="file" name="t4" style="font-family: Comic Sans MS" size="60"/></td></tr>
+		
+		         
+			<tr><td></td><td><input type="submit" value="Add Party">
+			</td>
+			</table>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+				</div>	
+					
+				</div>
+				
+	</body>
+</html>
